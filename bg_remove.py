@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from rembg import remove
 import os
 import sys
@@ -22,7 +22,12 @@ if output_dir:
 else:
     output_path = os.path.join(os.path.dirname(input_path), f"{base}_nobg{ext}")
 
-img = Image.open(input_path)
+try:
+    img = Image.open(input_path)
+except UnidentifiedImageError:
+    print(f"Warning: Cannot identify image file '{input_path}'. Skipping.")
+    sys.exit(0)
+
 result = remove(img)
 
 # Convert to RGB if saving as JPEG
