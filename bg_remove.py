@@ -1,9 +1,15 @@
 from PIL import Image
 from rembg import remove
 import os
+import sys
 
-input_path = input("Image path: ")
-output_dir = input("Save to folder (leave blank for same folder): ").strip()
+# Usage: python bg_remove.py <input_image> [output_dir]
+if len(sys.argv) < 2:
+    print("Usage: python bg_remove.py <input_image> [output_dir]")
+    sys.exit(1)
+
+input_path = sys.argv[1]
+output_dir = sys.argv[2] if len(sys.argv) > 2 else ''
 
 # Get file extension and base name
 base = os.path.splitext(os.path.basename(input_path))[0]
