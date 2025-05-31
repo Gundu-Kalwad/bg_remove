@@ -27,6 +27,10 @@ jobs:
           pip install --upgrade pillow
           pip install --upgrade rembg
 
+      - name: List files for debug
+        run: |
+          ls -l
+
       - name: Remove background from all images
         run: |
           mkdir -p output_dir
