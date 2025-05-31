@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nobg-images
-          path: "*_nobg.*"
+          path: output_dir/*_nobg.*
